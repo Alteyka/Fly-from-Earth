@@ -1,0 +1,14 @@
+{% extends 'flyfe/base_flyfe.html' %}
+
+{% block title %}
+    {{ card.title }} - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <h1 class="mt-5">
+        {{ card.title }}
+    </h1>
+    <p>
+        {{ card.body }}
+    </p>
+{% endblock %}
