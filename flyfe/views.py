@@ -2,11 +2,16 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.views.generic import View
+from .forms import NewPlanetForm
 
 import random
 
 from .models import *
 
+class CardCreate(View):
+    def get(self, request):
+        form = NewPlanetForm()
+        return render(request, 'flyfe/card_create.html', context={'form': form})
 
 def cards_list(request):
     cards = Card.objects.all()
