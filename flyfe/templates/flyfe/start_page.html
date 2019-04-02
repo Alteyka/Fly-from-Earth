@@ -1,0 +1,15 @@
+{% extends 'flyfe/base_flyfe.html' %}
+
+{% block title %}
+    Title
+{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4">Go!</h1>
+    <p class="lead">Hello cosmonaut</p>
+    <hr class="my-4">
+    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+    <a class="btn btn-primary btn-lg" href="{% url 'random_card_url' %}" role="button">random card</a>
+</div>
+{% endblock %}
