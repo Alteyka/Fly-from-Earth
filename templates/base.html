@@ -15,9 +15,10 @@
 <body>
     <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
         <form class="form-inline">
-                <button  class="btn btn-success mr-3" type="button">To main</button>
-                <a href="{% url 'cards_list_url' %}" class="btn btn-success mr-3" type="button">Cards</a>
-                <button class="btn btn-success" type="button">Main button</button>
+            <a class="btn btn-success mr-3" href="{% url 'start_page_url' %}" role="button">To main</a>
+            <a class="btn btn-success mr-3" href="{% url 'cards_list_url' %}" role="button">Cards</a>
+            <a class="btn btn-success mr-3" href="{% url 'card_create_url' %}" role="button">Create Planet</a>
+
         </form>
     </nav>
 

@@ -8,10 +8,10 @@ class NewPlanetForm(forms.ModelForm):
         model = Card
         fields = ['title', 'slug', 'body']
 
-        # Bind forms with a bootstraps forms
+        # Bind forms with a bootstrap forms
         widgets = {'title': forms.TextInput(attrs={'class': 'form-conrol'}),
                    'slug': forms.TextInput(attrs={'class': 'form-conrol'}),
-                   'body': forms.TextInput(attrs={'class': 'form-conrol'})}
+                   'body': forms.Textarea(attrs={'class': 'form-conrol'})}
 
 
     def clean_slug(self):
