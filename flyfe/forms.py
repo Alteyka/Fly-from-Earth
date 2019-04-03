@@ -2,22 +2,23 @@ from django import forms
 from .models import Card
 from django.core.exceptions import ValidationError
 
-class NewPlanetForm(forms.Form):
-    title = forms.CharField(max_length=50)
-    slug = forms.CharField(max_length=50)
-    body = forms.CharField(max_length=500)
+class NewPlanetForm(forms.ModelForm):
+
+    class Meta:
+        model = Card
+        fields = ['title', 'slug', 'body']
+
+        # Bind forms with a bootstraps forms
+        widgets = {'title': forms.TextInput(attrs={'class': 'form-conrol'}),
+                   'slug': forms.TextInput(attrs={'class': 'form-conrol'}),
+                   'body': forms.TextInput(attrs={'class': 'form-conrol'})}
+
 
     def clean_slug(self):
         new_slug = self.cleaned_data['slug'].lower()
 
         if new_slug =='create':
             raise ValidationError('Slug may not be "create"')
+        if Card.objects.filter(slug__iexact=new_slug).count():
+            raise ValidationError('Slug must be unique. We have "{}" slug already'.format(new_slug))
         return new_slug
-
-
-    def save(self):
-        new_planet = Card.objects.create(
-        title=self.cleaned_data['title'],
-        slug=self.cleaned_data['slug'],
-        body=self.cleaned_data['text'])
-        return new_planet
