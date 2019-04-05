@@ -17,9 +17,14 @@ class Card(models.Model):
 
     def get_absolute_url(self):
         return reverse('card_detail_url', kwargs={'slug': self.slug})
-# redefinition function save() based on id.
-# If id is not defined card is not in DataBase.
-# The slug will be generated when creating the card, not when editing it.
+
+
+    def get_update_url(self):
+        return reverse('card_update_url', kwargs={'slug': self.slug})
+
+    # Redefinition function save() based on id.
+    # If id is not defined card is not in DataBase.
+    # The slug will be generated when creating the card, not when editing it.
     def save(self, *args, **kwargs):
         if not self.id:
             self.slug = gen_slug(self.title)

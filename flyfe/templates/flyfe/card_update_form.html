@@ -1,0 +1,29 @@
+{% extends 'flyfe/base_flyfe.html' %}
+
+{% block title %}
+    Edit Planet "{{ card.title|title }}" - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <div class="row h-50% justify-content-center align-items-center">
+        <form action="{{ card.get_update_url }}" method="post">
+            {% csrf_token %}
+
+            {% for field in form %}
+                <div class="form-group">
+                    {% if field.errors %}
+                        <div class="alert alert-danger">
+                            {{ field.errors }}
+                        </div>
+                    {% endif %}
+
+                    {{ field.label }}
+                    {{ field }}
+                    {{ field.body }}
+                </div>
+            {% endfor %}
+
+            <button type="submit" class="btn btn-primary">Update Planet</button>
+        </form>
+    </div>
+{% endblock %}

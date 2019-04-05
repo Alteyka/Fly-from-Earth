@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.views.generic import View
 from .forms import NewPlanetForm
+from .utils import *
 
 import random
 
@@ -44,3 +45,10 @@ def random_card(request):
     cards = list(Card.objects.all())
     card = random.choice(cards)
     return render(request, 'flyfe/card_detail.html', context={'card': card})
+
+
+class CardUpdate(ObjectUpdateMixin, View):
+
+    model = Card
+    model_form = NewPlanetForm
+    template = 'flyfe/card_update_form.html'
