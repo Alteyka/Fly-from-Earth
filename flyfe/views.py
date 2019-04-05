@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
+from django.urls import reverse
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.views.generic import View
@@ -40,6 +41,7 @@ class CardDetail(View):
 def start_page(request):
     return render(request, 'flyfe/start_page.html')
 
+
 # Mechanism of random generate cards.
 def random_card(request):
     cards = list(Card.objects.all())
@@ -47,8 +49,21 @@ def random_card(request):
     return render(request, 'flyfe/card_detail.html', context={'card': card})
 
 
+
 class CardUpdate(ObjectUpdateMixin, View):
 
     model = Card
     model_form = NewPlanetForm
     template = 'flyfe/card_update_form.html'
+
+
+class CardDelete(View):
+
+    def get(self, request, slug):
+        card = Card.objects.get(slug__iexact=slug)
+        return render(request, 'flyfe/card_delete_form.html', context={'card': card})
+
+    def post(self, request, slug):
+        card = Card.objects.get(slug__iexact=slug)
+        card.delete()
+        return redirect(reverse('cards_list_url'))

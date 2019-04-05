@@ -1,0 +1,16 @@
+{% extends 'flyfe/base_flyfe.html' %}
+
+{% block title %}
+    Delete Planet "{{ card.title|title }}" - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <form action="{% url 'card_delete_url' slug=card.slug %}" method="post">
+        {% csrf_token %}
+        <h3>Ar you sure you want to delete <b>"{{ card.title|title }}"</b> planet?</h3>
+        <a href="{% url 'card_detail_url' slug=card.slug %}">Cancel</a>
+        <button type="submit" name="button" class="btn btn-danger">Delete</button>
+
+
+    </form>
+{% endblock %}

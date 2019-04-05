@@ -1,4 +1,5 @@
 from django.shortcuts import get_object_or_404
+from django.shortcuts import render
 from .models import *
 
 # Mixin for update planet
@@ -10,7 +11,7 @@ class ObjectUpdateMixin:
 
     def get(self, request, slug):
         obj = self.model.objects.get(slug__iexact=slug)
-        bound_form = Self.model_form(instance=obj)
+        bound_form = self.model_form(instance=obj)
         return render(request, self.template, context={'form': bound_form, self.model.__name__.lower(): obj})
 
     def post(self, request, slug):
