@@ -35,7 +35,7 @@ def cards_list(request):
 class CardDetail(View):
     def get(self, request, slug):
         card = get_object_or_404(Card, slug__iexact=slug)
-        return render(request, 'flyfe/card_detail.html', context={'card': card})
+        return render(request, 'flyfe/card_detail.html', context={'card': card, 'detail': True})
 
 
 def start_page(request):
