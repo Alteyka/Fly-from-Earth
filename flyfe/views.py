@@ -6,12 +6,14 @@ from django.shortcuts import get_object_or_404
 from django.views.generic import View
 from .forms import NewPlanetForm
 from .utils import *
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 import random
 
 from .models import *
 
-class CardCreate(View):
+
+class CardCreate(LoginRequiredMixin, View):
 
     def get(self, request):
         form = NewPlanetForm()
@@ -26,6 +28,7 @@ class CardCreate(View):
 
         return render(request, 'flyfe/card_create.html', context={'form': bound_form})
 
+        raise_exception = True
 
 def cards_list(request):
     cards = Card.objects.all()
@@ -50,14 +53,15 @@ def random_card(request):
 
 
 
-class CardUpdate(ObjectUpdateMixin, View):
+class CardUpdate(LoginRequiredMixin, ObjectUpdateMixin, View):
 
     model = Card
     model_form = NewPlanetForm
     template = 'flyfe/card_update_form.html'
+    raise_exception = True
 
 
-class CardDelete(View):
+class CardDelete(LoginRequiredMixin, View):
 
     def get(self, request, slug):
         card = Card.objects.get(slug__iexact=slug)
@@ -67,3 +71,5 @@ class CardDelete(View):
         card = Card.objects.get(slug__iexact=slug)
         card.delete()
         return redirect(reverse('cards_list_url'))
+
+    raise_exception = True

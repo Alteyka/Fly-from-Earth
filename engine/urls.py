@@ -16,7 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from .views import redirect_planet
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('flyfe/', include('flyfe.urls'))
+    path('flyfe/', include('flyfe.urls')),
+    path('', redirect_planet)
 ]

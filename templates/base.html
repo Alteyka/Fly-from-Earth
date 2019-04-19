@@ -25,14 +25,18 @@
     </nav>
 
     {% block content %}
-
+        {% csrf_token %}
     {% endblock %}
 
-    <div class="admin-panel align-items-center">
-        <a href="/admin" class="btn btn-info">Admin</a>
-        {% block admin-panel%}{% endblock %}
+    {% if request.user.is_authenticated and request.user.is_staff %}
+        <div class="admin-panel align-items-center">
+            <a href="/admin" class="btn btn-info">Admin</a>
+            {% block admin-panel%}{% endblock %}
 
-    </div>
+        </div>
+    {% endif %}
+
+
 
 </body>
 </html>
