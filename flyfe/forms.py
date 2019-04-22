@@ -22,3 +22,7 @@ class NewPlanetForm(forms.ModelForm):
         if Card.objects.filter(slug__iexact=new_slug).count():
             raise ValidationError('Slug must be unique. We have "{}" slug already'.format(new_slug))
         return new_slug
+
+class LoginForm(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)

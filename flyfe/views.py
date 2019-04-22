@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.views.generic import View
-from .forms import NewPlanetForm
+from .forms import NewPlanetForm, LoginForm
 from .utils import *
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -71,5 +71,9 @@ class CardDelete(LoginRequiredMixin, View):
         card = Card.objects.get(slug__iexact=slug)
         card.delete()
         return redirect(reverse('cards_list_url'))
-
     raise_exception = True
+
+
+def login_view(request):
+    form = LoginForm(request.POST or None)
+    return render(request, 'flyfe/login.html', context={'form': form})
