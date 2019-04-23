@@ -24,5 +24,5 @@ class NewPlanetForm(forms.ModelForm):
         return new_slug
 
 class LoginForm(forms.Form):
-    username = forms.CharField()
+    username = forms.CharField(max_length=50)
     password = forms.CharField(widget=forms.PasswordInput)

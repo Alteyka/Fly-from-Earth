@@ -1,16 +1,14 @@
-from django.shortcuts import render
-from django.shortcuts import redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.http import HttpResponse
-from django.shortcuts import get_object_or_404
 from django.views.generic import View
 from .forms import NewPlanetForm, LoginForm
 from .utils import *
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from django.contrib.auth import authenticate, login
 import random
-
 from .models import *
+from django import forms
 
 
 class CardCreate(LoginRequiredMixin, View):
@@ -75,5 +73,18 @@ class CardDelete(LoginRequiredMixin, View):
 
 
 def login_view(request):
-    form = LoginForm(request.POST or None)
-    return render(request, 'flyfe/login.html', context={'form': form})
+    username = request.POST.get('username')
+    password = request.POST.get('password')
+    user = authenticate(username=username, password=password)
+    error = ''
+    form = LoginForm
+    if user is not None:
+
+        if user.is_active:
+            login(request, user)
+            return redirect('start_page_url')
+        else:
+            error = 'Login and password is incorrect'
+
+
+    return render(request, 'flyfe/login.html', {'form': form, 'error': error})
