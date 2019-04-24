@@ -5,7 +5,7 @@ from django.views.generic import View
 from .forms import NewPlanetForm, LoginForm
 from .utils import *
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 import random
 from .models import *
 from django import forms
@@ -79,12 +79,18 @@ def login_view(request):
     error = ''
     form = LoginForm
     if user is not None:
-
         if user.is_active:
             login(request, user)
-            return redirect('start_page_url')
+            return redirect('/')
         else:
             error = 'Login and password is incorrect'
-
-
     return render(request, 'flyfe/login.html', {'form': form, 'error': error})
+
+
+def logout_view(request):
+    logout(request)
+
+
+
+def password_reset(request):
+    pass

@@ -1,26 +1,38 @@
 {% extends 'flyfe/base_flyfe.html' %}
 
 {% block content %}
+
+	{% if form.errors %}
+		{{ error }}
+	{% endif %}
+
 	<h1>Пожалуйста, авторизуйтесь</h1>
+
 	<form class="d-inline-block" method='post' action='{% url "login_view_url" %}'>
 		{% csrf_token %}
-		{{ error }}
-        <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-        </div>
+		<table>
 
-        <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-        </div>
 
+        <tr>
+        	<td>Login:{{ form.username }}</td>
+			<td></td>
+        </tr>
+		<tr>
+			<td>Password:{{ form.password }}</td>
+			<td></td>
+		</tr>
+		</table>
 		<button type="submit" class="btn btn-primary">Login</button>
 	</form>
+
+	<p><a href="{% url 'password_reset' %}">Lost password?</a></p>
 {% endblock content %}
 
 
-<!--<form>
+
+<!--
+{{ error }}
+<form>
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
@@ -35,4 +47,5 @@
     <label class="form-check-label" for="exampleCheck1">Check me out</label>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
-</form>>
+</form>
+>
