@@ -21,14 +21,13 @@
                 <a class="btn btn-success mr-3" href="{% url 'start_page_url' %}" role="button">To main</a>
                 <a class="btn btn-success mr-3" href="{% url 'cards_list_url' %}" role="button">Planets</a>
                 <a class="btn btn-success mr-3" href="{% url 'card_create_url' %}" role="button">Create Planet</a>
-                <a class="btn btn-info" style="position: fixed; right: 20px" href="" role="button">Logout</a>
+                <a class="btn btn-info" style="position: absolute; right: 20px" href="{% url 'logout_view_url' %}" role="button">Logout</a>
             {% else %}
                 <a class="btn btn-success mr-3" href="{% url 'start_page_url' %}" role="button">To main</a>
                 <a class="btn btn-success mr-3" href="{% url 'cards_list_url' %}" role="button">Planets</a>
                 <a class="btn btn-info" style="position: absolute; right: 115px" href="{% url 'login_view_url' %}" role="button">Login</a>
                 <a class="btn btn-info" style="position: absolute; right: 15px" href="{% url 'start_page_url' %}" role="button">Register</a>
             {% endif %}
-
         </form>
     </nav>
 

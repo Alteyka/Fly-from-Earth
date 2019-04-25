@@ -81,7 +81,7 @@ def login_view(request):
     if user is not None:
         if user.is_active:
             login(request, user)
-            return redirect('/')
+            return redirect('../')
         else:
             error = 'Login and password is incorrect'
     return render(request, 'flyfe/login.html', {'form': form, 'error': error})
@@ -89,6 +89,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
+    return render(request, 'flyfe/start_page.html')
 
 
 
