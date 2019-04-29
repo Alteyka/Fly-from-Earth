@@ -6,15 +6,16 @@
 
 {% block content%}
     <h1 class="mb-5 mt-5">Planets:</h1>
-
-    {% for card in cards %}
-        <div class="card w-50">
-            <h6 class="card-header">{{ card.date_add }}</h6>
-            <div class="card-body">
-                <h2 class="card-title">{{ card.title }}</h2>
-                <p class="card-text">{{ card.body }}</p>
-                <a href="{{ card.get_absolute_url }}" class="btn btn-primary">Go somewhere</a>
+    <div style="align-items: center">
+        {% for card in cards %}
+            <div style="align-items: center; " class="card w-50 float-right">
+                <h6 class="card-header">{{ card.date_add }}</h6>
+                <div class="card-body">
+                    <h2 class="card-title">{{ card.title }}</h2>
+                    <p class="card-text">{{ card.body }}</p>
+                    <a href="{{ card.get_absolute_url }}" class="btn btn-primary">Go somewhere</a>
+                </div>
             </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
+    </div>
 {% endblock %}

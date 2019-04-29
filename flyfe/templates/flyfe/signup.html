@@ -4,7 +4,29 @@
     <h2>Register</h2>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        <div class="form-group col-sm-2">
+            <label for="exampleFormControlInput1">Email address</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+        </div>
+
+        <div class="form-group col-sm-2">
+            <label for="inputPassword6">Password</label>
+            <input type="password" id="inputPassword6" class="form-control mx-sm-3" aria-describedby="passwordHelpInline">
+            <small id="passwordHelpInline" class="text-muted">
+                Must be 8-20 characters long.
+            </small>
+        </div>
+
+        <form class="form-inline">
+            <div class="form-group">
+                <label for="inputPassword6">Password</label>
+                <input type="password" id="inputPassword6" class="form-control mx-sm-3" aria-describedby="passwordHelpInline">
+                <small id="passwordHelpInline" class="text-muted">
+                    Must be 8-20 characters long.
+                </small>
+            </div>
+        </form>
+
         <button type="submit">Send</button>
     </form>
 {% endblock %}
