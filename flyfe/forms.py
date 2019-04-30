@@ -1,5 +1,5 @@
 from django import forms
-from .models import Card
+from .models import *
 from django.core.exceptions import ValidationError
 
 class NewPlanetForm(forms.ModelForm):
@@ -26,3 +26,12 @@ class NewPlanetForm(forms.ModelForm):
 class LoginForm(forms.Form):
     username = forms.CharField(max_length=50)
     password = forms.CharField(widget=forms.PasswordInput)
+
+
+class RegisterForm(forms.ModelForm):
+
+    class Meta:
+        model = User
+        fields = ['email', 'password']
+
+        widgets = {'password': forms.PasswordInput}

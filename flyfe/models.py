@@ -1,12 +1,19 @@
 from django.db import models
 from django.shortcuts import reverse
 from django.utils.text import slugify
+from django import forms
 from time import time
 
 # Function for generate slug based on linuxtime
 def gen_slug(s):
     new_slug = slugify(s, allow_unicode=True)
     return new_slug + '-' + str(int(time()))
+
+
+class User(models.Model):
+    email = models.EmailField()
+    password = models.CharField(max_length=50)
+
 
 
 class Card(models.Model):

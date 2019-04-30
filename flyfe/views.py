@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.http import HttpResponse
 from django.views.generic import View
-from .forms import NewPlanetForm, LoginForm
+from .forms import *
 from .utils import *
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import authenticate, login, logout
@@ -95,12 +95,12 @@ def logout_view(request):
 
 def signup_view(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('../')
     else:
-        form = UserCreationForm()
+        form = RegisterForm()
     return render( request, 'flyfe/signup.html', {'form': form})
 
 
