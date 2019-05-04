@@ -1,6 +1,8 @@
 from django import forms
 from .models import *
 from django.core.exceptions import ValidationError
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 class NewPlanetForm(forms.ModelForm):
 
@@ -28,10 +30,20 @@ class LoginForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput)
 
 
-class RegisterForm(forms.ModelForm):
+class RegistrationForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['email', 'password']
+        fields = ['username', 'email', 'password1', 'password2']
 
         widgets = {'password': forms.PasswordInput}
+
+    def save(self, commit=True):
+        user = super(RegistrationForm, self).save(commit=False)
+        username = self.cleaned_data['username']
+        user.email = self.cleaned_data['email']
+
+        if commit:
+            user.save()
+
+        return user

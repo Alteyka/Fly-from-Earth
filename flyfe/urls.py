@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.urls import path
+from django.urls import path, include
 
 from .views import *
 
@@ -14,5 +14,6 @@ urlpatterns = [
     path('login/', login_view, name='login_view_url'),
     path('logout/', logout_view, name='logout_view_url'),
     path('password_reset/', password_reset, name='password_reset'),
-    path('signup/', signup_view, name='signup_view_url')
+    path('signup/', signup_view, name='signup_view_url'),
+    path('account/', include('account.urls')),
 ]

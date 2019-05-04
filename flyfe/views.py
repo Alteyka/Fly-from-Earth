@@ -7,6 +7,7 @@ from .utils import *
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 import random
 from .models import *
 from django import forms
@@ -95,15 +96,26 @@ def logout_view(request):
 
 def signup_view(request):
     if request.method == 'POST':
-        form = RegisterForm(request.POST)
+        form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('../')
     else:
-        form = RegisterForm()
-    return render( request, 'flyfe/signup.html', {'form': form})
+        form = RegistrationForm()
+        return render(request, 'flyfe/signup.html', {'form': form})
+
 
 
 
 def password_reset(request):
     pass
+'''
+if request.method == 'POST':
+    form = RegisterForm(request.POST)
+    if form.is_valid():
+        form.save()
+        return redirect('../')
+else:
+    form = RegisterForm()
+return render( request, 'flyfe/signup.html', {'form': form})
+'''
