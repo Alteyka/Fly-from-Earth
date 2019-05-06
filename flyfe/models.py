@@ -12,8 +12,9 @@ def gen_slug(s):
 
 class User(models.Model):
     email = models.EmailField()
-    username = models.CharField(max_length=50)
-    password = models.CharField(max_length=50)
+    username = models.CharField(max_length=100)
+    password1 = models.CharField(max_length=50)
+    password2 = models.CharField(max_length=50)
 
 
 

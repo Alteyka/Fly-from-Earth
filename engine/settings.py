@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'flyfe',
     'django.contrib.sites',
     'account',
-    
+
 ]
 
 MIDDLEWARE = [
