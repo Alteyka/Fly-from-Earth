@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import View
 from .forms import *
 from .utils import *
@@ -99,10 +99,10 @@ def register(request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('../')
+            return HttpResponseRedirect('../')
     else:
         form = RegistrationForm()
-    return render(request, 'flyfe/signup.html', {'form': form})
+        return render(request, 'flyfe/signup.html', {'form': form})
 
 
 def password_reset(request):

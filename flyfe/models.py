@@ -10,11 +10,11 @@ def gen_slug(s):
     return new_slug + '-' + str(int(time()))
 
 
-class User(models.Model):
+class MyUser(models.Model):
     email = models.EmailField()
     username = models.CharField(max_length=100)
     password = models.CharField(max_length=50)
-    password2 = models.CharField(max_length=50)
+    password_confirmation = models.CharField(max_length=50)
 
 
 

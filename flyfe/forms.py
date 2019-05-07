@@ -32,15 +32,16 @@ class LoginForm(forms.ModelForm):
             'password': forms.PasswordInput(attrs={'class': 'form-control'})
         }
 
-class RegistrationForm(UserCreationForm):
+class RegistrationForm(forms.ModelForm):
 
     class Meta:
-        model = User
-        fields = ['email', 'username', 'password']
+        model = MyUser
+        fields = ['email', 'username', 'password', 'password_confirmation']
 
         widgets = {'email': forms.TextInput(attrs={'class': 'form-control'}),
                    'username': forms.TextInput(attrs={'class': 'form-control'}),
-                   'password': forms.PasswordInput(attrs={'class': 'form-control'})
+                   'password': forms.PasswordInput(attrs={'class': 'form-control'}),
+                   'password_confirmation': forms.PasswordInput(attrs={'class': 'form-control'})
                    }
 
     def save(self, commit=True):
@@ -48,6 +49,7 @@ class RegistrationForm(UserCreationForm):
         user.email = self.cleaned_data['email']
         username = self.cleaned_data['username']
         password = self.cleaned_data['password']
+        password = self.cleaned_data['password_confirmation']
 
 
         if commit:
