@@ -20,31 +20,37 @@ class NewPlanetForm(forms.ModelForm):
         return new_slug
 
 
-class LoginForm(forms.Form):
-    username = forms.CharField(max_length=100)
-    password = forms.CharField(max_length=100, widget=forms.PasswordInput)
+class LoginForm(forms.ModelForm):
 
+    class Meta:
+        model = User
+
+        fields = ['username', 'password']
+
+        widgets = {
+            'username': forms.TextInput(attrs={'class': 'form-control'}),
+            'password': forms.PasswordInput(attrs={'class': 'form-control'})
+        }
 
 class RegistrationForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2']
+        fields = ['email', 'username', 'password']
 
-        widgets = {'password': forms.PasswordInput(attrs={'class': 'form-conrol'})}
+        widgets = {'email': forms.TextInput(attrs={'class': 'form-control'}),
+                   'username': forms.TextInput(attrs={'class': 'form-control'}),
+                   'password': forms.PasswordInput(attrs={'class': 'form-control'})
+                   }
 
     def save(self, commit=True):
         user = super(RegistrationForm, self).save(commit=False)
-        username = self.cleaned_data['username']
         user.email = self.cleaned_data['email']
-        password1 = self.cleaned_data['password1']
-        password2 = self.cleaned_data['password2']
+        username = self.cleaned_data['username']
+        password = self.cleaned_data['password']
+
 
         if commit:
             user.save()
 
         return user
-
-        if password1 != password2:
-            raise form.ValidationError("Passwords do not match")
-        return password
