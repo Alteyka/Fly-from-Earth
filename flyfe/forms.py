@@ -32,27 +32,12 @@ class LoginForm(forms.ModelForm):
             'password': forms.PasswordInput(attrs={'class': 'form-control'})
         }
 
-class RegistrationForm(forms.ModelForm):
+class RegistrationForm(UserCreationForm):
 
-    class Meta:
-        model = MyUser
-        fields = ['email', 'username', 'password', 'password_confirmation']
+    fields = ['email']
 
-        widgets = {'email': forms.TextInput(attrs={'class': 'form-control'}),
-                   'username': forms.TextInput(attrs={'class': 'form-control'}),
-                   'password': forms.PasswordInput(attrs={'class': 'form-control'}),
-                   'password_confirmation': forms.PasswordInput(attrs={'class': 'form-control'})
-                   }
-
-    def save(self, commit=True):
-        user = super(RegistrationForm, self).save(commit=False)
-        user.email = self.cleaned_data['email']
-        username = self.cleaned_data['username']
-        password = self.cleaned_data['password']
-        password = self.cleaned_data['password_confirmation']
-
-
-        if commit:
-            user.save()
-
-        return user
+    widgets = {'email': forms.TextInput(attrs={'class': 'form-control'}),
+               'username': forms.TextInput(attrs={'class': 'form-control'}),
+               'password': forms.PasswordInput(attrs={'class': 'form-control'}),
+               'confirm_password': forms.PasswordInput(attrs={'class': 'form-control'})
+               }
