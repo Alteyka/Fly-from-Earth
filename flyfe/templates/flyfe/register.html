@@ -1,0 +1,13 @@
+{% extends 'flyfe/base_flyfe.html' %}
+
+{% block content %}
+    <h2 class="text-center">Register</h2>
+        <form method="post" action="{% url 'register_view_url' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.as_p }}
+            </div>
+            <button type="submit" class="btn btn-success">Send</button>
+        </form>
+
+{% endblock %}

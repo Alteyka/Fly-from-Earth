@@ -1,7 +1,7 @@
-{% extends 'base_flyfe.html' %}
+{% extends 'flyfe/base_flyfe.html' %}
 
 {% block content %}
     <p>Logged out!</p>
 
-    <a href="{% url 'logout_view_url' %}">Click here to login again.</a>
-{% endlock %}
+    <a href="{% url 'login_view_url' %}">Click here to login again.</a>
+{% endblock %}

@@ -20,24 +20,7 @@ class NewPlanetForm(forms.ModelForm):
         return new_slug
 
 
-class LoginForm(forms.ModelForm):
+class LoginForm(forms.Form):
 
-    class Meta:
-        model = User
-
-        fields = ['username', 'password']
-
-        widgets = {
-            'username': forms.TextInput(attrs={'class': 'form-control'}),
-            'password': forms.PasswordInput(attrs={'class': 'form-control'})
-        }
-
-class RegistrationForm(UserCreationForm):
-
-    fields = ['email']
-
-    widgets = {'email': forms.TextInput(attrs={'class': 'form-control'}),
-               'username': forms.TextInput(attrs={'class': 'form-control'}),
-               'password': forms.PasswordInput(attrs={'class': 'form-control'}),
-               'confirm_password': forms.PasswordInput(attrs={'class': 'form-control'})
-               }
+    username = forms.CharField(max_length=50)
+    password = forms.CharField(max_length=50, widget=forms.PasswordInput)

@@ -81,28 +81,27 @@ def login_view(request):
     error = ''
     form = LoginForm
     if user is not None:
-        if user.is_active:
-            login(request, user)
-            return redirect('../')
-        else:
+        login(request, user)
+        return redirect('../')
+    else:
             error = 'Login and password is incorrect'
     return render(request, 'flyfe/login.html', {'form': form, 'error': error})
 
 
 def logout_view(request):
     logout(request)
-    return render(request, 'flyfe/start_page.html')
+    return render(request, 'flyfe/logout.html')
 
 
-def register(request):
+def register_view(request):
     if request.method == 'POST':
-        form = RegistrationForm(request.POST)
+        form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
             return render(request, 'flyfe/start_page.html')
     else:
-        form = RegistrationForm()
-    return render(request, 'flyfe/signup.html', {'form': form})
+        form = UserCreationForm()
+    return render(request, 'flyfe/register.html', {'form': form})
 
 
 def password_reset(request):

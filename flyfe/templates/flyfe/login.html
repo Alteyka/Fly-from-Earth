@@ -2,14 +2,12 @@
 
 {% block content %}
 
-	{% if form.errors %}
-		{{ error }}
-	{% endif %}
+
 
 	<h1 class="text-center">Please Login</h1>
 
 	<div class="row h-50% justify-content-center align-items-center">
-
+	</div>
 		<form method='post' action='{% url "login_view_url" %}'>
 			{% csrf_token %}
 
@@ -17,14 +15,17 @@
 				<div class="form-group">
 					{{ field.label }}
 					{{ field }}
+					{% if form.errors %}
+						{{ error }}
+					{% endif %}
 				</div>
 			{% endfor %}
 
-				<button type="submit" class="btn btn-primary">Login</button>
+			<button type="submit" class="btn btn-primary">Login</button>
 
 		</form>
 
 	<p><a href="{% url 'password_reset' %}">Lost password?</a></p>
 
-	</div>
+
 {% endblock content %}
