@@ -32,7 +32,7 @@ class CardCreate(LoginRequiredMixin, View):
 
 def cards_list(request):
     cards = Card.objects.all()
-    return render(request, 'flyfe/index.html', context={'cards': cards})
+    return render(request, 'flyfe/cards_list.html', context={'cards': cards})
 
 
 class CardDetail(View):

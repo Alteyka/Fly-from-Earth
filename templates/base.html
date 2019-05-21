@@ -43,7 +43,7 @@
     {% endblock %}
 
     {% if request.user.is_authenticated and request.user.is_staff %}
-        <div class="admin-panel align-items-center">
+        <div class="admin-panel align-items-center" style="z-index: 99999999;">
             <a href="/admin" class="btn btn-info">Admin</a>
             {% block admin-panel%}{% endblock %}
         </div>
