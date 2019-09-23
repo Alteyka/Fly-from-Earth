@@ -39,9 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'flyfe',
     'django.contrib.sites',
-    'account',
+    'flyfe',
 ]
 
 MIDDLEWARE = [
@@ -52,8 +51,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'account.middleware.LocaleMiddleware',
-    'account.middleware.TimezoneMiddleware'
 ]
 
 ROOT_URLCONF = 'engine.urls'
@@ -70,7 +67,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'account.context_processors.account',
             ],
         },
     },
@@ -133,13 +129,4 @@ STATICFILES_DIRS = [
 
 SITE_ID = 2
 
-ACCOUNT_LOGIN_URL = 'yourapp:account_login'
-ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = ACCOUNT_LOGIN_URL
-ACCOUNT_PASSWORD_RESET_REDIRECT_URL = ACCOUNT_LOGIN_URL
-ACCOUNT_EMAIL_CONFIRMATION_URL = "yourapp:account_confirm_email"
-ACCOUNT_SETTINGS_REDIRECT_URL = 'yourapp:account_settings'
-ACCOUNT_PASSWORD_CHANGE_REDIRECT_URL = "yourapp:account_password"
 
-ACCOUNT_EMAIL_UNIQUE = True
-ACCOUNT_EMAIL_CONFIRMATION_REQUIRED = True
-ACCOUNT_ACTIVATION_DAYS = 7

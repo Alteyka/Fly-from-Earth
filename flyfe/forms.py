@@ -5,7 +5,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 class NewPlanetForm(forms.ModelForm):
-
     class Meta:
         model = Card
         fields = ['title', 'slug', 'body']
@@ -19,8 +18,6 @@ class NewPlanetForm(forms.ModelForm):
             raise ValidationError('Slug must be unique. We have "{}" slug already'.format(new_slug))
         return new_slug
 
-
 class LoginForm(forms.Form):
-
-    username = forms.CharField(max_length=50)
-    password = forms.CharField(max_length=50, widget=forms.PasswordInput)
+    username = forms.CharField(max_length=20)
+    password = forms.CharField(widget=forms.PasswordInput)

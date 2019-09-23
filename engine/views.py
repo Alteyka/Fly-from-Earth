@@ -1,4 +1,4 @@
 from django.shortcuts import redirect
 
 def redirect_planet(request):
-    return redirect('cards_list_url', permanent=True)
+    return redirect('start_page_url', permanent=True)

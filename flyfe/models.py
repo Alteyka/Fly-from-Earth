@@ -10,14 +10,6 @@ def gen_slug(s):
     return new_slug + '-' + str(int(time()))
 
 
-'''class MyUser(models.Model):
-    email = models.EmailField()
-    username = models.CharField(max_length=100)
-    password = models.CharField(max_length=50)'''
-
-
-
-
 class Card(models.Model):
     title = models.CharField(max_length=150, db_index=True)
     slug = models.SlugField(max_length=150, blank=True, unique=True)
