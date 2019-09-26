@@ -20,7 +20,7 @@ class CardCreate(View):
         form = NewPlanetForm()
         return render(request, 'flyfe/card_create.html', context={'form': form})
 
-    @login_required(login_url='/flyfe/login/')
+
     def post(self, request):
         bound_form = NewPlanetForm(request.POST)
 
@@ -38,7 +38,6 @@ def cards_list(request):
 
 
 class CardDetail(View):
-    @login_required(login_url='/flyfe/login/')
     def get(self, request, slug):
         card = get_object_or_404(Card, slug__iexact=slug)
         return render(request, 'flyfe/card_detail.html', context={'card': card, 'detail': True})
@@ -65,12 +64,11 @@ class CardUpdate(LoginRequiredMixin, ObjectUpdateMixin, View):
 
 
 class CardDelete(LoginRequiredMixin, View):
-    @login_required(login_url='/flyfe/login/')
     def get(self, request, slug):
         card = Card.objects.get(slug__iexact=slug)
         return render(request, 'flyfe/card_delete_form.html', context={'card': card})
 
-    @login_required(login_url='/flyfe/login/')
+
     def post(self, request, slug):
         card = Card.objects.get(slug__iexact=slug)
         card.delete()
@@ -99,12 +97,16 @@ def logout_view(request):
 
 def register_view(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
             return render(request, 'flyfe/start_page.html')
     else:
-        form = UserCreationForm()
+        form = SignUpForm()
     return render(request, 'flyfe/register.html', {'form': form})
 
 

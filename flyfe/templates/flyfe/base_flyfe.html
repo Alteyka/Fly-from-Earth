@@ -2,6 +2,6 @@
 
 {% block admin-panel %}
     <a href="{% url 'card_create_url' %}" class="btn btn-light">Create</a>
-    <a href="{{ card.get_update_url }}" class="btn btn-light edit" style="{% if detail %}display: block;{% endif %}">Edit</a>
+    <a href="{{ card.get_update_url }}" class="btn btn-light edit" ">Edit</a>
     <a href="{{ card.get_delete_url }}" class="btn btn-danger delete" style="{% if detail %}display: block;{% endif %}">Delete</a>
 {% endblock %}
