@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 
 {% block admin-panel %}
-    <a href="{% url 'card_create_url' %}" class="btn btn-light">Create</a>
-    <a href="{{ card.get_update_url }}" class="btn btn-light edit" ">Edit</a>
-    <a href="{{ card.get_delete_url }}" class="btn btn-danger delete" style="{% if detail %}display: block;{% endif %}">Delete</a>
+    <div class="row h-50% justify-content-center align-items-center">
+        <a href="{% url 'card_create_url' %}" class="btn btn-success">Create</a>
+        <a href="{{ card.get_update_url }}" class="btn btn-primary">Edit</a>
+        <a href="{{ card.get_delete_url }}" class="btn btn-danger delete">Delete</a>
+        <a href="/admin" class="btn btn-info">Admin</a>
+    </div>
 {% endblock %}

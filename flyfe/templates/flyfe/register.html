@@ -1,13 +1,17 @@
 {% extends 'flyfe/base_flyfe.html' %}
 
 {% block content %}
-    <h2 class="text-center">Register</h2>
+    <h2 class="text-center">SignUp</h2>
+    <div class="row h-50% justify-content-center align-items-center">
         <form method="post" action="{% url 'register_view_url' %}">
             {% csrf_token %}
             <div class="form-group">
                 {{ form.as_p }}
             </div>
-            <button type="submit" class="btn btn-success">Send</button>
+            <div id="submit-registration-button" class="wrapper">
+                <button type="submit" class="btn btn-success">SignUp</button>
+            </div>
         </form>
+    </div>
 
 {% endblock %}

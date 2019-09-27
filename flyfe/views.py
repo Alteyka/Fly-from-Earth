@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.admin.views.decorators import staff_member_required
 from django.views.generic import View
 from .forms import *
 from .utils import *
