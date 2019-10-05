@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
 
 {% block admin-panel %}
-    <div class="row h-50% justify-content-center align-items-center">
-        <a href="{% url 'card_create_url' %}" class="btn btn-success">Create</a>
-        <a href="{{ card.get_update_url }}" class="btn btn-primary">Edit</a>
-        <a href="{{ card.get_delete_url }}" class="btn btn-danger delete">Delete</a>
-        <a href="/admin" class="btn btn-info">Admin</a>
+    <div class="dropdown" style="position: absolute; right: 120px">
+        <button onclick="myFunction()" class="dropbtn">Actions</button>
+        <div id="myDropdown" class="dropdown-content">
+            <a href="{% url 'card_create_url' %}" class="btn btn-success">Create</a>
+            <a href="{{ card.get_update_url }}" class="btn btn-primary">Edit</a>
+            <a href="{{ card.get_delete_url }}" class="btn btn-danger delete">Delete</a>
+            <a href="/admin" class="btn btn-info">Admin</a>
+        </div>
     </div>
 {% endblock %}
+
