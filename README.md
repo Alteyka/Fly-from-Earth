@@ -1,6 +1,6 @@
 # Fly-from-Earth
 
-Simple project about how would fly from earth.
+Simple project about how would fly from Earth.
 Realised classic components of typical django project:
 Some "one-to-one" models;
 Class based Views (CBV) with using decorators which forbid display the content.
