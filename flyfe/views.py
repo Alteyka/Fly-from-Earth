@@ -53,7 +53,7 @@ def start_page(request):
 def random_card(request):
     cards = list(Card.objects.all())
     card = random.choice(cards)
-    return render(request, 'flyfe/card_detail.html', context={'card': card})
+    return render(request, 'flyfe/card_detail.html', context={'card': card, 'detail': True})
 
 
 

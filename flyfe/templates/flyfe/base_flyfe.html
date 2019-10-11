@@ -9,8 +9,8 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
             <a id="ap-create-btn" href="{% url 'card_create_url' %}" class="btn btn-success">Create</a>
-            <a id="ap-edit-btn" href="{{ card.get_update_url }}" class="btn btn-primary" >Edit</a>
-            <a id="ap-delete-btn" href="{{ card.get_delete_url }}" class="btn btn-danger delete">Delete</a>
+            <a id="ap-edit-btn" href="{{ card.get_update_url }}" class="btn btn-primary" style="{% if detail %}display: block;{% endif %}">Edit</a>
+            <a id="ap-delete-btn" href="{{ card.get_delete_url }}" class="btn btn-danger delete" style="{% if detail %}display: block;{% endif %}">Delete</a>
             <a id="ap-admin-btn" href="/admin" class="btn btn-info">Admin</a>
         </div>
     </div>
