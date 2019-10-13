@@ -15,3 +15,7 @@
 #ap-edit-btn, #ap-delete-btn {
     display: none;
 }
+
+div .form-group ul {
+    display: none;
+}

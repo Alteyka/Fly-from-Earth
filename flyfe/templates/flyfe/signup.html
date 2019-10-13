@@ -1,0 +1,28 @@
+{% extends 'flyfe/base_flyfe.html' %}
+
+{% block content %}
+    <h2 class="text-center">SignUp</h2>
+    <div class="row h-50% justify-content-center align-items-center">
+        <form method="post" action="{% url 'signup_view_url' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                {% for field in form %}
+                     <p>
+                          {{ field.label_tag }}<br>
+                          {{ field }}
+                          {% if field.help_text %}
+                              <small style="display: none">{{ field.help_text }}</small>
+                          {% endif %}
+                          {% for error in field.errors %}
+                              <p style="color: red">{{ error }}</p>
+                            {% endfor %}
+                       </p>
+                  {% endfor %}
+            </div>
+            <div id="submit-registration-button" class="wrapper">
+                <button type="submit" class="btn btn-success">SignUp</button>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

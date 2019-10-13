@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import *
+from django.conf.urls import url
+from . views import *
 
 urlpatterns = [
     path('cards_list/', cards_list, name='cards_list_url'),
@@ -12,5 +13,7 @@ urlpatterns = [
     path('login/', login_view, name='login_view_url'),
     path('logout/', logout_view, name='logout_view_url'),
     path('password_reset/', password_reset, name='password_reset'),
-    path('register/', register_view, name='register_view_url'),
+    path('signup/', signup_view, name='signup_view_url'),
+    url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+        activate_account, name='activate'),
 ]

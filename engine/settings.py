@@ -144,4 +144,11 @@ db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
 
 
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'forprojects.test.mail@gmail.com'
+EMAIL_HOST_PASSWORD = 'strongadminpassword'
+EMAIL_PORT = 587
+
+
 
