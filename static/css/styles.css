@@ -1,3 +1,8 @@
+body {
+  margin: 0;
+  background: LIGHTCYAN;
+}
+
 #submit-registration-button{
     text-align: center;
 }
@@ -6,16 +11,33 @@
     text-align: center;
 }
 
-.carousel {
-  width:700px;
-  height:500px;
-  margin: 0 auto;
-}
-
 #ap-edit-btn, #ap-delete-btn {
     display: none;
 }
 
 div .form-group ul {
     display: none;
+}
+
+.card-content {
+  display: inline-flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: nowrap;
+
+}
+
+.card-content-text {
+  width: 40%;
+  border: 2px solid green;
+}
+
+.card-content-text h1 {
+  padding: 0;
+}
+
+.card-content-carousel {
+  width: 40%;
+  height: 50%;
+  margin: 0;
 }
