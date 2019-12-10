@@ -39,7 +39,7 @@ class CardCreate(View):
         return render(request, 'flyfe/card_create.html', context={'form': bound_form})
 
 
-@login_required(login_url='/flyfe/login/')
+#@login_required(login_url='/flyfe/login/')
 def cards_list(request):
     cards = Card.objects.all()
     return render(request, 'flyfe/cards_list.html', context={'cards': cards})
@@ -56,7 +56,7 @@ def start_page(request):
 
 
 # Mechanism of random generate cards.
-@login_required(login_url='/flyfe/login/')
+#@login_required(login_url='/flyfe/login/')
 def random_card(request):
     cards = list(Card.objects.all())
     card = random.choice(cards)
