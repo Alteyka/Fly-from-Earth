@@ -1,33 +1,24 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse
-from django.http import HttpResponse, HttpResponseRedirect
-from django.contrib.admin.views.decorators import staff_member_required
+from django.http import HttpResponse
 from django.views.generic import View
-from django import forms
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.sites.shortcuts import get_current_site
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from django.core.mail import EmailMessage
 from django.contrib import messages
-from django.contrib.auth.models import User
 import random
-from .models import *
 from .forms import *
 from .utils import *
 from .tokens import account_activation_token
-
 
 
 class CardCreate(View):
     def get(self, request):
         form = NewPlanetForm()
         return render(request, 'flyfe/card_create.html', context={'form': form})
-
 
     def post(self, request):
         bound_form = NewPlanetForm(request.POST)
@@ -39,7 +30,6 @@ class CardCreate(View):
         return render(request, 'flyfe/card_create.html', context={'form': bound_form})
 
 
-#@login_required(login_url='/flyfe/login/')
 def cards_list(request):
     cards = Card.objects.all()
     return render(request, 'flyfe/cards_list.html', context={'cards': cards})
@@ -56,12 +46,10 @@ def start_page(request):
 
 
 # Mechanism of random generate cards.
-#@login_required(login_url='/flyfe/login/')
 def random_card(request):
     cards = list(Card.objects.all())
     card = random.choice(cards)
     return render(request, 'flyfe/card_detail.html', context={'card': card, 'detail': True})
-
 
 
 class CardUpdate(LoginRequiredMixin, ObjectUpdateMixin, View):
@@ -75,7 +63,6 @@ class CardDelete(LoginRequiredMixin, View):
     def get(self, request, slug):
         card = Card.objects.get(slug__iexact=slug)
         return render(request, 'flyfe/card_delete_form.html', context={'card': card})
-
 
     def post(self, request, slug):
         card = Card.objects.get(slug__iexact=slug)
@@ -141,22 +128,6 @@ def activate_account(request, uidb64, token):
         return render(request, 'flyfe/start_page.html')
     else:
         return HttpResponse('Activation link is invalid!')
-
-
-'''
-def signup_view(request):
-    if request.method == 'POST':
-        form = SignUpForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
-            return render(request, 'flyfe/start_page.html')
-    else:
-        form = SignUpForm()
-    return render(request, 'flyfe/signup.html', {'form': form})'''
 
 
 def password_reset(request):

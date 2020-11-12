@@ -4,10 +4,11 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
+
 class NewPlanetForm(forms.ModelForm):
     class Meta:
         model = Card
-        fields = ['title', 'slug', 'body']
+        fields = ['title', 'grape', 'type', 'place', 'year', 'body', 'slug']
 
     def clean_slug(self):
         new_slug = self.cleaned_data['slug'].lower()
@@ -18,6 +19,7 @@ class NewPlanetForm(forms.ModelForm):
             raise ValidationError('Slug must be unique. We have "{}" slug already'.format(new_slug))
         return new_slug
 
+
 class LoginForm(forms.Form):
     username = forms.CharField(max_length=20)
     password = forms.CharField(widget=forms.PasswordInput)
@@ -25,9 +27,6 @@ class LoginForm(forms.Form):
 
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(max_length=200, help_text='Required')
-    #username = forms.CharField(max_length=20)
-    #password1 = forms.CharField(widget=forms.PasswordInput)
-    #password2 = forms.CharField(widget=forms.PasswordInput)
 
     class Meta:
         model = User

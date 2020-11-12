@@ -41,3 +41,15 @@ div .form-group ul {
   height: 50%;
   margin: 0;
 }
+
+.wine-card {
+    flex-direction: row;
+    display: inline-block;
+    width: 18rem;
+    min-height: 20rem;
+    margin: 1rem 1rem 1rem 1rem;
+}
+
+.my-bar {
+    padding-bottom: 2rem;
+}
