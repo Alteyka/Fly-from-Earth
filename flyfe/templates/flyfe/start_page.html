@@ -7,11 +7,12 @@
 {% block content %}
 
     <div class="jumbotron">
-        <h1 class="display-4">Go!</h1>
-        <p class="lead">Hello cosmonaut</p>
+        <h1 class="display-4">Hey!</h1>
         <hr class="my-4">
-        <p>This mechanism teleport you on one of the solarsystem planet. Don`t  feel shy use all buttons, like at cosmic ship.</p>
-        <a class="btn btn-success btn-lg" id="main-button-start_page" href="{% url 'random_card_url' %}" role="button">Let's fly</a>
+        <p>This mechanism will show you one of the previously added wine lists.
+            Registered users can add wines as cards and store it in convenient view.</p>
+        <a class="btn btn-success btn-lg" id="main-button-start_page"
+           href="{% url 'random_card_url' %}" role="button">Let's fly</a>
         <a class="btn btn-primary" style="position: absolute; right: 115px"
            id="improve-button-start_page"
            href="https://solarsystem.nasa.gov/"

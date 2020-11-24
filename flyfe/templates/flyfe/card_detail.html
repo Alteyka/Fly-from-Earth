@@ -25,6 +25,10 @@
             <p class="text-center">
                 {{ card.year }}
             </p>
+            <div class="optional-buttons-card text-center">
+                <a class="btn btn-danger mr-3" href="{% url 'card_delete_url' slug=card.slug %}" role="button">Delete</a>
+                <a class="btn btn-warning mr-3" href="{{ card.get_update_url }}" role="button">Update</a>
+            </div>
         </div>
         <div class="card-content-carousel">
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">

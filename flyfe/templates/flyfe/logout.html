@@ -1,7 +1,8 @@
 {% extends 'flyfe/base_flyfe.html' %}
 
 {% block content %}
-    <p>Logged out!</p>
-
-    <a href="{% url 'login_view_url' %}">Click here to login again.</a>
+    <div class="text-center log-out-box">
+        <h3>Logged out!</h3>
+        <a class="btn btn-success mr-3" href="{% url 'login_view_url' %}" role="button">Click here to login again.</a>
+    </div>
 {% endblock %}

@@ -19,18 +19,20 @@
 
 <body>
     <div class="my-bar">
-        <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        <nav class="navbar navbar-dark bg-primary" style="background-color: #e3f2fd;">
             <form class="form-inline">
                 {% if request.user.is_authenticated and request.user.is_staff %}
-                    {% block admin-panel%}{% endblock %}
+                    {% block admin-panel%}
+                    {% endblock %}
+                    <a class="btn btn-success mr-3" href="{% url 'start_page_url' %}" role="button">To main</a>
+                    <a class="btn btn-info" style="position: absolute; right: 20px" href="{% url 'logout_view_url' %}" role="button">Logout</a>
+                    <a class="btn btn-success mr-3" href="{% url 'cards_list_url' %}" role="button">Wines</a>
+                    <a class="btn btn-success mr-3" href="{% url 'card_create_url' %}" role="button">Create Grape</a>
+                    <a class="btn btn-info" style="position: absolute; right: 20px" href="{% url 'logout_view_url' %}" role="button">Logout</a>
                 {% endif %}
                 {% if request.user.is_authenticated %}
                     <a class="btn btn-success mr-3" href="{% url 'start_page_url' %}" role="button">To main</a>
-                    <a class="btn btn-info" style="position: absolute; right: 20px" href="{% url 'logout_view_url' %}" role="button">Logout</a>
-                {% endif %}
-                {% if request.user.is_staff %}
                     <a class="btn btn-success mr-3" href="{% url 'cards_list_url' %}" role="button">Wines</a>
-                    <a class="btn btn-success mr-3" href="{% url 'card_create_url' %}" role="button">Create Grape</a>
                     <a class="btn btn-info" style="position: absolute; right: 20px" href="{% url 'logout_view_url' %}" role="button">Logout</a>
                 {% else %}
                     <a class="btn btn-success mr-3" href="{% url 'start_page_url' %}" role="button">To main</a>
