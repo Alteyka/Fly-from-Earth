@@ -15,8 +15,8 @@ class NewPlanetForm(forms.ModelForm):
 
         if new_slug =='create':
             raise ValidationError('Slug may not be "create"')
-        if Card.objects.filter(slug__iexact=new_slug).count():
-            raise ValidationError('Slug must be unique. We have "{}" slug already'.format(new_slug))
+        # if Card.objects.filter(slug__iexact=new_slug).count():
+        #     raise ValidationError('Slug must be unique. We have "{}" slug already'.format(new_slug))
         return new_slug
 
 

@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.views.generic import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.sites.shortcuts import get_current_site
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, get_user
 from django.contrib.auth.decorators import login_required
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -130,5 +130,6 @@ def activate_account(request, uidb64, token):
         return HttpResponse('Activation link is invalid!')
 
 
-def password_reset(request):
-    pass
+def get_my_user(request):
+    user = get_user(request)
+    return render(request, 'Fly-from-Earth/base.html', context={'user': user})

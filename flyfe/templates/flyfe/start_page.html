@@ -7,10 +7,9 @@
 {% block content %}
 
     <div class="jumbotron">
-        <h1 class="display-4">Hey!</h1>
+        <h1 class="display-4">Hey {{ user.username }}!</h1>
         <hr class="my-4">
-        <p>This mechanism will show you one of the previously added wine lists.
-            Registered users can add wines as cards and store it in convenient view.</p>
+        <p>In this site you can see a couple of wine</p>
         <a class="btn btn-success btn-lg" id="main-button-start_page"
            href="{% url 'random_card_url' %}" role="button">Let's fly</a>
         <a class="btn btn-primary" style="position: absolute; right: 115px"
