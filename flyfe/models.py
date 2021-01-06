@@ -23,11 +23,7 @@ class Card(models.Model):
     place = models.CharField(max_length=200, blank=True)
     type = models.CharField(max_length=200, blank=True)
     year = models.DateField(blank=True, default=datetime.date.today)
-    author = models.ForeignKey(User,
-                               on_delete=models.CASCADE,
-                               default=User,
-                               blank=False,
-                               null=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, blank=False, null=True)
 
     def get_absolute_url(self):
         return reverse('card_detail_url', kwargs={'slug': self.slug})
