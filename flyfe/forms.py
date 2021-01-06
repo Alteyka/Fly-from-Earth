@@ -9,6 +9,8 @@ class NewPlanetForm(forms.ModelForm):
     class Meta:
         model = Card
         fields = ['title', 'grape', 'type', 'place', 'year', 'body', 'slug']
+        widgets = {
+                   'slug': forms.HiddenInput()}
 
     def clean_slug(self):
         new_slug = self.cleaned_data['slug'].lower()

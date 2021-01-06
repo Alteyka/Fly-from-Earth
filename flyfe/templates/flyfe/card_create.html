@@ -5,25 +5,31 @@
 {% endblock %}
 
 {% block content %}
-    <div class="row h-50% justify-content-center align-items-center">
-        <form action="{% url 'card_create_url' %}" method="post">
-            {% csrf_token %}
+    <form action="{% url 'card_create_url' %}" method="post">
+        {% csrf_token %}
+        <div class="d-flex flex-column w-25" style="margin-left: 35%">
+            <h4><span class="badge bg-light text-dark" style="margin-left: 43%">{{ form.title.label }}</span></h4>
+            {{ form.title }}
 
-            {% for field in form %}
-                <div class="form-group">
-                    {% if field.errors %}
-                        <div class="alert alert-danger">
-                            {{ field.errors }}
-                        </div>
-                    {% endif %}
+            <h4><span class="badge bg-light text-dark" style="margin-left: 43%">{{ form.grape.label }}</span></h4>
+            {{ form.grape }}
 
-                    {{ field.label }}
-                    {{ field }}
-                    {{ field.body }}
-                </div>
-            {% endfor %}
+            <h4><span class="badge bg-light text-dark" style="margin-left: 43%">{{ form.type.label }}</span></h4>
+            {{ form.type }}
 
-            <button type="submit" class="btn btn-primary">Create Planet</button>
-        </form>
-    </div>
+            <h4><span class="badge bg-light text-dark" style="margin-left: 43%">{{ form.place.label }}</span></h4>
+            {{ form.place }}
+
+            <h4><span class="badge bg-light text-dark" style="margin-left: 43%">{{ form.year.label }}</span></h4>
+            {{ form.year }}
+
+            <h4><span class="badge bg-light text-dark" style="margin-left: 43%">{{ form.body.label }}</span></h4>
+            {{ form.body }}
+
+            {{ form.slug }}
+            {{ form.author }}
+            <button type="submit" class="btn btn-success" style="margin-top: 1rem">Create Planet</button>
+        </div>
+
+    </form>
 {% endblock %}

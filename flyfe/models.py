@@ -1,10 +1,11 @@
 import datetime
-
 from django.db import models
 from django.shortcuts import reverse
 from django.utils.text import slugify
-from django import forms
 from time import time
+from django.conf import settings
+from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 
 
 # Function for generate slug based on linuxtime
@@ -22,6 +23,11 @@ class Card(models.Model):
     place = models.CharField(max_length=200, blank=True)
     type = models.CharField(max_length=200, blank=True)
     year = models.DateField(blank=True, default=datetime.date.today)
+    author = models.ForeignKey(User,
+                               on_delete=models.CASCADE,
+                               default=User,
+                               blank=False,
+                               null=True)
 
     def get_absolute_url(self):
         return reverse('card_detail_url', kwargs={'slug': self.slug})

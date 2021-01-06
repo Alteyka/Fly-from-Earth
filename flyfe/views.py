@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.views.generic import View
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.edit import CreateView
 from django.contrib.sites.shortcuts import get_current_site
 from django.contrib.auth import authenticate, login, logout, get_user
 from django.contrib.auth.decorators import login_required
@@ -15,23 +16,33 @@ from .utils import *
 from .tokens import account_activation_token
 
 
+def created_by(model, request):
+    obj = model.objects.latest('pk')
+    if obj.author is None:
+        obj.author = request.user
+    obj.save()
+
+
 class CardCreate(View):
+
     def get(self, request):
         form = NewPlanetForm()
         return render(request, 'flyfe/card_create.html', context={'form': form})
 
     def post(self, request):
         bound_form = NewPlanetForm(request.POST)
+        model = Card
 
         if bound_form.is_valid():
             created_planet = bound_form.save()
+            created_by(model, request)
             return redirect(created_planet)
 
         return render(request, 'flyfe/card_create.html', context={'form': bound_form})
 
 
 def cards_list(request):
-    cards = Card.objects.all()
+    cards = Card.objects.filter(author=get_user(request))
     return render(request, 'flyfe/cards_list.html', context={'cards': cards})
 
 
