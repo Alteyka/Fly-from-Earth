@@ -21,15 +21,14 @@ div .form-group ul {
 
 .card-content {
   display: inline-flex;
-  justify-content: space-around;
-  align-items: center;
+  width: 100%;
   flex-wrap: nowrap;
-
 }
 
 .card-content-text {
   width: 40%;
   border: 2px solid green;
+  margin: 0 1rem 0 10rem;
 }
 
 .card-content-text h1 {
@@ -40,6 +39,7 @@ div .form-group ul {
   width: 40%;
   height: 50%;
   margin: 0;
+  margin: 0 5rem 0 2rem;
 }
 
 .wine-card {

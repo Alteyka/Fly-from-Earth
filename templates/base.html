@@ -1,7 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,10 +12,10 @@
     <link rel="stylesheet" href="{% static 'css/actions.css'%}">
     <link href="{% static 'images' %}">
     <title>
-        {% block title %}{% endblock %}
+        {% block title %}
+        {% endblock %}
     </title>
 </head>
-
 <body>
     <div class="my-bar">
         <nav class="navbar navbar-dark bg-primary" >
@@ -29,6 +28,7 @@
                 {% if request.user.is_authenticated %}
                     <a class="btn btn-success mr-3" href="{% url 'start_page_url' %}" role="button">To main</a>
                     <a class="btn btn-success mr-3" href="{% url 'cards_list_url' %}" role="button">Wines</a>
+                    <a class="btn btn-success mr-3" href="{% url 'card_create_url' %}" role="button">Create</a>
                     <a class="btn btn-info" style="position: absolute; right: 20px" href="{% url 'logout_view_url' %}" role="button">Logout</a>
                     <h4 style="color: black; position: absolute; right: 110px">{{ user.username }}</h4>
                 {% else %}
@@ -40,13 +40,9 @@
             </form>
         </nav>
     </div>
-
-
-
     {% block content %}
         {% csrf_token %}
     {% endblock %}
-
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

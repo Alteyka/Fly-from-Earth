@@ -8,7 +8,7 @@
     <div class="row h-50% justify-content-center align-items-center card-delete-box">
         <form action="{% url 'card_delete_url' slug=card.slug %}" method="post">
             {% csrf_token %}
-            <h3>Ar you sure you want to delete <b>"{{ card.title|title }}"</b> planet?</h3>
+            <h3>Ar you sure you want to delete <b>"{{ card.title|title }}"</b>?</h3>
             <div class="text-center">
                 <a class="btn btn-warning mr-3" href="{% url 'card_detail_url' slug=card.slug %}">Cancel</a>
                 <button type="submit" name="button" class="btn btn-danger">Delete</button>
