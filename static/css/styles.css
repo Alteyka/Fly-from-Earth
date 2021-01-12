@@ -29,6 +29,7 @@ div .form-group ul {
   width: 40%;
   border: 2px solid green;
   margin: 0 1rem 0 10rem;
+  position: relative;
 }
 
 .card-content-text h1 {
@@ -59,7 +60,10 @@ div .form-group ul {
 }
 
 .optional-buttons-card {
-    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    position: absolute;
+    bottom: 0;
+    margin-left: 38%;
 }
 
 .card-delete-box {
