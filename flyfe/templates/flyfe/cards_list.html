@@ -5,13 +5,17 @@
 {% endblock %}
 
 {% block content%}
-   {% for card in cards %}
-        <div class="wine-card card">
-            <div class="card-body">
-                <h5 class="card-title">{{ card.title }}</h5>
-                <p class="card-text">{{ card.body|truncatechars:40 }}</p>
-                <a href="{{ card.get_absolute_url }}" class="btn btn-primary">Go inside</a>
+    <div class="cards-wrapper">
+       {% for card in cards %}
+            <div class="wine-card card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ card.title|truncatechars:25 }}</h5>
+                    <h6 class="cards-list-text">{{ card.body|truncatechars:40 }}</h6>
+                    <div class="cards-list-optional-btn">
+                        <a href="{{ card.get_absolute_url }}" class="btn btn-primary">Подробно</a>
+                    </div>
+                </div>
             </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
+    </div>
 {% endblock %}

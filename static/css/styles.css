@@ -49,6 +49,8 @@ div .form-group ul {
     width: 18rem;
     min-height: 20rem;
     margin: 1rem 1rem 1rem 1rem;
+    border-color: black;
+    vertical-align: bottom;
 }
 
 .my-bar {
@@ -66,6 +68,33 @@ div .form-group ul {
     margin-left: 38%;
 }
 
+.cards-list-optional-btn {
+    margin-bottom: 1rem;
+    position: absolute;
+    bottom: 0;
+}
+
 .card-delete-box {
     padding-top: 20rem;
+}
+
+.cards-wrapper {
+    margin-left: 6.5rem;
+    padding-top: 1rem;
+}
+
+.cards-list-text {
+    padding-top: 1rem;
+}
+
+.card-create-form {
+    margin-left: 35%;
+    border: groove 2px black;
+    border-radius: .5rem;
+    padding: 1rem;
+}
+
+.card-create-form-field {
+
+    border: outset 2px grey;
 }
