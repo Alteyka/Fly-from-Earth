@@ -33,7 +33,7 @@
                     <h4 style="color: black; position: absolute; right: 110px">{{ user.username }}</h4>
                 {% else %}
                     <a class="btn btn-success mr-3" href="{% url 'start_page_url' %}" role="button">Главная</a>
-                    <a class="btn btn-info" style="position: absolute; right: 115px" href="{% url 'login_view_url' %}" role="button">Войти</a>
+                    <a class="btn btn-info" style="position: absolute; right: 145px" href="{% url 'login_view_url' %}" role="button">Войти</a>
                     <a class="btn btn-info" style="position: absolute; right: 15px" href="{% url 'signup_view_url' %}" role="button">Регистрация</a>
                 {% endif %}
             </form>

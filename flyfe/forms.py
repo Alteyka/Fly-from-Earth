@@ -5,7 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 
-class NewPlanetForm(forms.ModelForm):
+class NewCardForm(forms.ModelForm):
     class Meta:
         model = Card
         fields = ['title', 'grape', 'type', 'place', 'year', 'body', 'slug']

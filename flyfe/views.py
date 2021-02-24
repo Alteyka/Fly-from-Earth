@@ -25,17 +25,17 @@ def created_by(model, request):
 class CardCreate(View):
 
     def get(self, request):
-        form = NewPlanetForm()
+        form = NewCardForm()
         return render(request, 'flyfe/card_create.html', context={'form': form})
 
     def post(self, request):
-        bound_form = NewPlanetForm(request.POST)
+        bound_form = NewCardForm(request.POST)
         model = Card
 
         if bound_form.is_valid():
-            created_planet = bound_form.save()
+            created_card = bound_form.save()
             created_by(model, request)
-            return redirect(created_planet)
+            return redirect(created_card)
 
         return render(request, 'flyfe/card_create.html', context={'form': bound_form})
 
@@ -64,7 +64,7 @@ def random_card(request):
 
 class CardUpdate(LoginRequiredMixin, ObjectUpdateMixin, View):
     model = Card
-    model_form = NewPlanetForm
+    model_form = NewCardForm
     template = 'flyfe/card_update_form.html'
     raise_exception = True
 
